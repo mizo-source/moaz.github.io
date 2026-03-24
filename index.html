@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎂 عيد ميلاد 🎂</title>
 
-<!-- 🔤 خط احترافي -->
+<!-- خط احترافي -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+
+<title>🎂 عيد ميلاد 🎂</title>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -15,17 +16,17 @@ body{
 font-family:'Cairo',sans-serif;
 background:linear-gradient(135deg,#240046,#9d4edd,#ff4d6d);
 color:white;
-overflow:hidden;
 display:flex;
 justify-content:center;
 align-items:center;
 min-height:100vh;
+overflow:hidden;
 }
 
-/* 🎬 دخول ناعم */
+/* 🎬 دخول */
 .container{
 opacity:0;
-transform:translateY(50px);
+transform:translateY(40px);
 animation:fadeIn 1.5s forwards;
 }
 
@@ -33,7 +34,7 @@ animation:fadeIn 1.5s forwards;
 to{opacity:1;transform:translateY(0)}
 }
 
-/* 💎 بوكس احترافي */
+/* 💎 بوكس */
 .container{
 width:90%;
 max-width:380px;
@@ -46,31 +47,43 @@ text-align:center;
 z-index:10;
 }
 
-/* 🔥 عنوان مضيء */
+/* 🔥 عنوان */
 h1{
 font-size:26px;
 text-shadow:0 0 10px #fff,0 0 20px #ff4d6d;
 animation:glow 2s infinite alternate;
+margin-bottom:10px;
 }
-
 @keyframes glow{
 from{text-shadow:0 0 5px #fff}
 to{text-shadow:0 0 20px #ff4d6d}
 }
 
-/* ⏳ عداد */
+/* ⏳ */
 .counter{
 display:flex;
 justify-content:space-between;
 margin-bottom:15px;
 }
-
 .box{
 flex:1;
 margin:3px;
 padding:10px;
 border-radius:15px;
 background:rgba(255,255,255,0.1);
+}
+
+/* 💌 رسالة فوق الباسورد */
+.intro-text{
+margin-bottom:15px;
+font-size:15px;
+line-height:1.8;
+text-shadow:0 0 8px rgba(255,255,255,0.4);
+animation:fadeText 2s infinite alternate;
+}
+@keyframes fadeText{
+from{opacity:.6}
+to{opacity:1}
 }
 
 /* 🔐 */
@@ -81,11 +94,15 @@ border:none;
 border-radius:10px;
 margin:5px;
 }
-
 button{
 background:#ff4d6d;
 color:white;
 cursor:pointer;
+transition:.3s;
+}
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 15px #ff4d6d;
 }
 
 /* ❌ اهتزاز */
@@ -97,19 +114,34 @@ cursor:pointer;
 75%{transform:translateX(-5px)}
 }
 
-/* 🖼️ صورة */
+/* 📝 كتابة */
+#text{
+font-size:18px;
+line-height:1.8;
+text-shadow:0 0 5px #fff,0 0 10px #ff4d6d;
+animation:pulse 2s infinite;
+margin-top:15px;
+}
+@keyframes pulse{
+0%,100%{transform:scale(1)}
+50%{transform:scale(1.05)}
+}
+
+/* 🖼️ */
 img{
 width:100%;
 height:200px;
 object-fit:cover;
 border-radius:15px;
-margin-top:10px;
+margin-top:20px;
+transition:.3s;
 }
+img:hover{transform:scale(1.03)}
 
-/* 🎥 فيديو */
+/* 🎥 */
 .video-box{
 position:relative;
-margin-top:10px;
+margin-top:20px;
 }
 video{
 width:100%;
@@ -120,11 +152,10 @@ position:absolute;
 top:10px;
 left:0;
 right:0;
-font-size:18px;
 font-weight:bold;
 }
 
-/* 🕯️ شموع */
+/* 🕯️ */
 .candle{
 width:10px;
 height:40px;
@@ -149,30 +180,60 @@ animation:flicker .4s infinite;
 50%{opacity:.3}
 }
 
-/* 🎈 بالونات */
+/* 🎈 بالونات احترافية */
 .balloon{
 position:fixed;
-bottom:-100px;
-width:40px;
-height:60px;
+bottom:-120px;
+width:45px;
+height:65px;
 border-radius:50%;
-opacity:.5;
-animation:float linear infinite;
+opacity:.7;
+animation:floatUp linear infinite, sway 3s ease-in-out infinite;
 z-index:0;
 }
-@keyframes float{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
+.balloon::after{
+content:'';
+position:absolute;
+top:65px;
+left:50%;
+width:2px;
+height:60px;
+background:linear-gradient(white,transparent);
+transform:translateX(-50%);
+animation:swing 2s infinite;
+}
+.balloon::before{
+content:'';
+position:absolute;
+top:58px;
+left:50%;
+width:8px;
+height:8px;
+background:#fff;
+border-radius:50%;
+transform:translateX(-50%);
 }
 
-/* 👀 زيارات */
+@keyframes floatUp{
+to{transform:translateY(-130vh)}
+}
+@keyframes sway{
+0%,100%{margin-left:0}
+50%{margin-left:15px}
+}
+@keyframes swing{
+0%,100%{transform:translateX(-50%) rotate(5deg)}
+50%{transform:translateX(-50%) rotate(-5deg)}
+}
+
+/* 👀 */
 #visits{
 position:fixed;
 bottom:5px;
 width:100%;
 font-size:12px;
-opacity:.7;
 text-align:center;
+opacity:.7;
 }
 
 .hidden{display:none}
@@ -181,32 +242,30 @@ text-align:center;
 
 <body>
 
-<!-- 🎈 بالونات -->
 <script>
-for(let i=0;i<8;i++){
+for(let i=0;i<10;i++){
 let b=document.createElement("div");
 b.className="balloon";
-b.style.left=(i*12)+"%";
+b.style.left=Math.random()*100+"%";
 b.style.background=`hsl(${Math.random()*360},70%,60%)`;
-b.style.animationDuration=(6+Math.random()*4)+"s";
+b.style.animationDuration=(6+Math.random()*5)+"s";
 document.body.appendChild(b);
 }
 </script>
 
 <div class="container">
 
-<!-- ⏳ العداد -->
 <div id="countdown"></div>
 
-<!-- 🔐 تسجيل -->
 <div id="login">
+<div class="intro-text">💌 عندي ليك مفاجأة... اكتب الباسورد 😉</div>
+
 <input type="password" id="pass" placeholder="الباسورد">
 <br>
 <button onclick="check()">فتح</button>
-<p id="error" style="color:red;display:none">❌ الباسورد غلط</p>
+<p id="error" style="color:red;display:none">❌ غلط</p>
 </div>
 
-<!-- 🎉 المحتوى -->
 <div id="content" class="hidden">
 
 <h1>🎂 Happy Birthday 🎂</h1>
@@ -217,7 +276,7 @@ document.body.appendChild(b);
 <div class="candle"></div>
 </div>
 
-<p>🎂 كل سنة وانت طيب ❤️🎉</p>
+<p id="text"></p>
 
 <img src="https://files.catbox.moe/e0avra.jpeg">
 
@@ -229,53 +288,52 @@ document.body.appendChild(b);
 </div>
 
 </div>
-
 </div>
 
-<!-- 🔊 صوت -->
 <audio id="audio" src="https://files.catbox.moe/mo1uqz.m4a" loop></audio>
 
-<!-- 👀 زيارات -->
 <div id="visits"></div>
 
 <script>
-
-// 🔐 باسورد
 let password="18/8/2008-5/4/2008";
 
 function check(){
 let p=document.getElementById("pass").value;
-
-if(p===password){
-openSite();
-}else{
-let box=document.getElementById("login");
-box.classList.add("shake");
-setTimeout(()=>box.classList.remove("shake"),300);
+if(p===password){openSite();}
+else{
+document.getElementById("login").classList.add("shake");
+setTimeout(()=>login.classList.remove("shake"),300);
 document.getElementById("error").style.display="block";
 }
 }
 
-// دخول تلقائي
-document.getElementById("pass").addEventListener("input",()=>{
-if(document.getElementById("pass").value===password){
-openSite();
+pass.oninput=()=>{
+if(pass.value===password) openSite();
 }
-});
 
-// فتح الموقع
 function openSite(){
-document.getElementById("login").style.display="none";
-document.getElementById("content").classList.remove("hidden");
+login.style.display="none";
+content.classList.remove("hidden");
 
-let audio=document.getElementById("audio");
 audio.play();
+vid.onplay=()=>audio.pause();
+vid.onpause=()=>audio.play();
 
-document.getElementById("vid").onplay=()=>audio.pause();
-document.getElementById("vid").onpause=()=>audio.play();
+type();
 }
 
-// ⏳ عداد
+/* ✍️ كتابة */
+let msg="🎂 كل سنة وانت طيب ❤️🎉";
+let i=0;
+function type(){
+if(i<msg.length){
+text.innerHTML+=msg[i];
+i++;
+setTimeout(type,50);
+}
+}
+
+/* ⏳ */
 let target=new Date("2026-04-05");
 setInterval(()=>{
 let now=new Date();
@@ -286,7 +344,7 @@ let h=Math.floor(diff/3600000%24);
 let m=Math.floor(diff/60000%60);
 let s=Math.floor(diff/1000%60);
 
-document.getElementById("countdown").innerHTML=
+countdown.innerHTML=
 `<div class="counter">
 <div class="box">${d} 🎂</div>
 <div class="box">${h} ⏰</div>
@@ -295,12 +353,11 @@ document.getElementById("countdown").innerHTML=
 </div>`;
 },1000);
 
-// 👀 زيارات
+/* 👀 */
 let v=localStorage.getItem("visits")||0;
 v++;
 localStorage.setItem("visits",v);
-document.getElementById("visits").innerText="👀 "+v;
-
+visits.innerText="👀 "+v;
 </script>
 
 </body>
