@@ -383,8 +383,29 @@ login.style.display="none";
 content.classList.remove("hidden");
 
 audio.play();
-vid.onplay=()=>audio.pause();
-vid.onpause=()=>audio.play();
+window.addEventListener("load", () => {
+
+let vid = document.querySelector("video");
+let audio = document.getElementById("audio");
+
+if(!vid || !audio) return;
+
+/* لما الفيديو يشتغل */
+vid.addEventListener("play", () => {
+audio.pause();
+});
+
+/* لما الفيديو يقف */
+vid.addEventListener("pause", () => {
+audio.play();
+});
+
+/* لما الفيديو يخلص */
+vid.addEventListener("ended", () => {
+audio.play();
+});
+
+});
 
 type();
 }
