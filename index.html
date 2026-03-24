@@ -3,89 +3,113 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>🎂 عيد ميلاد 🎂</title>
+<title>🎂 عيد ميلاد</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
-margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#5f0a87,#a4508b);
+background:linear-gradient(135deg,#240046,#9d4edd,#ff4d6d);
 color:white;
-text-align:center;
 overflow:hidden;
 }
 
-.container{position:relative;z-index:10;padding:20px}
+/* دخول ناعم */
+.container{
+opacity:0;
+transform:translateY(50px);
+animation:fadeIn 1.5s forwards;
+}
 
-input{
+@keyframes fadeIn{
+to{opacity:1;transform:translateY(0)}
+}
+
+/* بوكس احترافي */
+.container{
+position:relative;
+margin:auto;
+top:20px;
+width:90%;
+max-width:380px;
+background:rgba(0,0,0,0.4);
+border-radius:25px;
+padding:20px;
+backdrop-filter:blur(10px);
+box-shadow:0 0 30px rgba(255,255,255,0.2);
+text-align:center;
+}
+
+/* عنوان مضيء */
+h1{
+font-size:28px;
+margin-bottom:10px;
+text-shadow:0 0 10px #fff,0 0 20px #ff4d6d,0 0 30px #ff4d6d;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+from{text-shadow:0 0 5px #fff}
+to{text-shadow:0 0 20px #ff4d6d}
+}
+
+/* عداد */
+.counter{
+display:flex;
+justify-content:space-between;
+margin-bottom:15px;
+}
+
+.box{
+flex:1;
+margin:3px;
+padding:10px;
+border-radius:15px;
+background:rgba(255,255,255,0.1);
+backdrop-filter:blur(5px);
+}
+
+/* باسورد */
+input,button{
+width:80%;
 padding:10px;
 border:none;
 border-radius:10px;
-margin:10px;
+margin:5px;
 }
 
 button{
-padding:10px 20px;
-border:none;
-border-radius:10px;
-background:#ff4081;
+background:#ff4d6d;
 color:white;
-cursor:pointer;
 }
 
-#error{color:red;display:none}
-
-.hidden{display:none}
-
-/* بالونات */
-.balloon{
-position:fixed;
-bottom:-100px;
-width:40px;
-height:60px;
-border-radius:50%;
-animation:up 10s linear infinite;
-z-index:0;
-opacity:.7;
-}
-@keyframes up{
-0%{transform:translateY(0)}
-100%{transform:translateY(-120vh)}
-}
-
-/* صورة */
+/* صور */
 img{
-width:250px;
-height:250px;
+width:100%;
+height:200px;
 object-fit:cover;
-border-radius:20px;
+border-radius:15px;
+margin-top:10px;
 }
 
 /* فيديو */
-.video-box{
-position:relative;
-width:90%;
-max-width:300px;
-margin:auto;
-}
-.video-text{
-position:absolute;
-top:10px;
-left:0;
-right:0;
-color:white;
-font-weight:bold;
+video{
+width:100%;
+border-radius:15px;
+margin-top:10px;
 }
 
 /* شموع */
 .candle{
-display:inline-block;
 width:10px;
 height:40px;
 background:white;
+display:inline-block;
 margin:5px;
 position:relative;
 }
+
 .candle::after{
 content:'';
 position:absolute;
@@ -95,25 +119,28 @@ width:6px;
 height:10px;
 background:orange;
 border-radius:50%;
-animation:flicker .5s infinite;
-}
-@keyframes flicker{
-0%{opacity:1}
-50%{opacity:.3}
-100%{opacity:1}
+animation:flicker .4s infinite;
 }
 
-/* عداد */
-.counter{
-display:flex;
-justify-content:center;
-gap:10px;
-margin-top:20px;
+@keyframes flicker{
+0%,100%{opacity:1}
+50%{opacity:.3}
 }
-.box{
-background:rgba(255,255,255,.1);
-padding:15px;
-border-radius:15px;
+
+/* بالونات ناعمة */
+.balloon{
+position:fixed;
+bottom:-100px;
+width:40px;
+height:60px;
+border-radius:50%;
+opacity:.5;
+animation:float linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(0)}
+100%{transform:translateY(-120vh)}
 }
 
 /* زيارات */
@@ -121,40 +148,39 @@ border-radius:15px;
 position:fixed;
 bottom:5px;
 width:100%;
+text-align:center;
 font-size:12px;
 opacity:.7;
 }
+
+.hidden{display:none}
 </style>
 </head>
 
 <body>
 
-<!-- بالونات -->
 <script>
-for(let i=0;i<15;i++){
+for(let i=0;i<8;i++){
 let b=document.createElement("div");
 b.className="balloon";
-b.style.left=Math.random()*100+"%";
+b.style.left=(i*12)+"%";
 b.style.background=`hsl(${Math.random()*360},70%,60%)`;
-b.style.animationDuration=(5+Math.random()*5)+"s";
+b.style.animationDuration=(6+Math.random()*4)+"s";
 document.body.appendChild(b);
 }
 </script>
 
 <div class="container">
 
-<!-- عداد قبل الدخول -->
 <div id="countdown"></div>
 
-<!-- باسورد -->
 <div id="login">
-<input type="password" id="pass" placeholder="اكتب الباسورد">
+<input type="password" id="pass" placeholder="الباسورد">
 <br>
 <button onclick="check()">فتح</button>
-<div id="error">😝😝😝❌ الباسورد غلط</div>
+<p id="error" style="color:red;display:none">❌ غلط</p>
 </div>
 
-<!-- المحتوى -->
 <div id="content" class="hidden">
 
 <h1>🎉 Happy Birthday 🎉</h1>
@@ -165,29 +191,22 @@ document.body.appendChild(b);
 <div class="candle"></div>
 </div>
 
-<p>🎂 كل سنة وانت طيب ❤️🎉</p>
+<p>🎂 كل سنة وانت طيب ❤️</p>
 
 <img src="https://files.catbox.moe/e0avra.jpeg">
 
-<br><br>
-
-<div class="video-box">
-<div class="video-text"> 🤍🙂 فاكره الفديو ده  ✍️</div>
-<video id="vid" width="100%" controls>
-<source src="https://files.catbox.moe/9nxznw.mp4" type="video/mp4">
+<video id="vid" controls>
+<source src="https://files.catbox.moe/9nxznw.mp4">
 </video>
-</div>
 
 <audio id="audio" src="https://files.catbox.moe/mo1uqz.m4a" autoplay loop></audio>
 
 </div>
-
 </div>
 
 <div id="visits"></div>
 
 <script>
-// باسورد
 function check(){
 let p=document.getElementById("pass").value;
 if(p==="18/8/2008-5/4/2008"){
@@ -199,22 +218,22 @@ document.getElementById("error").style.display="block";
 }
 }
 
-// دخول تلقائي
 document.getElementById("pass").addEventListener("input",()=>{
 if(document.getElementById("pass").value==="1234"){
 check();
 }
 });
 
-// عداد
 let target=new Date("2026-04-05");
 setInterval(()=>{
 let now=new Date();
 let diff=target-now;
+
 let d=Math.floor(diff/1000/60/60/24);
 let h=Math.floor(diff/1000/60/60)%24;
 let m=Math.floor(diff/1000/60)%60;
 let s=Math.floor(diff/1000)%60;
+
 document.getElementById("countdown").innerHTML=
 `<div class="counter">
 <div class="box">${d}<br>يوم</div>
@@ -224,16 +243,15 @@ document.getElementById("countdown").innerHTML=
 </div>`;
 },1000);
 
-// منع الصوت مع الفيديو
 let vid=document.getElementById("vid");
 let audio=document.getElementById("audio");
+
 vid.onplay=()=>audio.pause();
 vid.onpause=()=>audio.play();
 
-// زيارات
-let v=localStorage.getItem("visits")||0;
+let v=localStorage.getItem("v")||0;
 v++;
-localStorage.setItem("visits",v);
+localStorage.setItem("v",v);
 document.getElementById("visits").innerText="عدد الزيارات: "+v;
 </script>
 
