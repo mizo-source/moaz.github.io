@@ -218,25 +218,35 @@ login.classList.add("shake");
 setTimeout(()=>login.classList.remove("shake"),300);
 error.style.display="block";
 }
-}
-
 pass.oninput=()=>{
 if(pass.value===password) openSite();
 }
-
 function openSite(){
 login.style.display="none";
 content.classList.remove("hidden");
 
-let vid=document.getElementById("vid");
-let audio=document.getElementById("audio");
+let vid = document.querySelector("video");
+let audio = document.getElementById("audio");
 
+if(audio){
 audio.currentTime=0;
 audio.play().catch(()=>{});
+}
 
-vid.addEventListener("play",()=>audio.pause());
-vid.addEventListener("ended",()=>audio.play().catch(()=>{}));
+if(vid && audio){
 
+vid.addEventListener("play", () => {
+audio.pause();
+});
+
+vid.addEventListener("ended", () => {
+audio.play().catch(()=>{});
+});
+
+}
+
+type();
+}
 type();
 }
 
