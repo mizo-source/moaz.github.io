@@ -105,7 +105,6 @@ button:hover{
 transform:scale(1.05);
 box-shadow:0 0 15px #ff4d6d;
 }
-
 /* ❌ */
 .shake{animation:shake .3s;}
 @keyframes shake{
@@ -383,8 +382,22 @@ login.style.display="none";
 content.classList.remove("hidden");
 
 audio.play();
-window.addEventListener("load", () => {
+let vid = document.querySelector("video");
+let audio = document.getElementById("audio");
 
+if(!vid || !audio) return;
+
+vid.addEventListener("play", () => {
+audio.pause();
+});
+
+vid.addEventListener("pause", () => {
+audio.play().catch(()=>{});
+});
+
+vid.addEventListener("ended", () => {
+audio.play().catch(()=>{});
+});
 let vid = document.querySelector("video");
 let audio = document.getElementById("audio");
 
