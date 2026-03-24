@@ -242,18 +242,6 @@ b.style.background=`hsl(${Math.random()*360},70%,60%)`;
 b.style.animationDuration=(6+Math.random()*5)+"s";
 document.body.appendChild(b);
 }
-let vid = document.querySelector("video");
-let audio = document.getElementById("audio");
-
-/* لما الفيديو يشتغل */
-vid.onplay = () => {
-audio.pause();
-}
-
-/* لما الفيديو يقف */
-vid.onpause = () => {
-audio.play();
-}
 </script>
 
 <div class="container">
@@ -371,30 +359,14 @@ document.getElementById("login").classList.add("shake");
 setTimeout(()=>login.classList.remove("shake"),300);
 document.getElementById("error").style.display="block";
 }
-}
-
 pass.oninput=()=>{
 if(pass.value===password) openSite();
 }
-
 function openSite(){
 login.style.display="none";
 content.classList.remove("hidden");
 
 audio.play();
-let vid = document.querySelector("video");
-let audio = document.getElementById("audio");
-
-if(!vid || !audio) return;
-
-vid.addEventListener("play", () => {
-audio.pause();
-});
-
-vid.addEventListener("pause", () => {
-audio.play().catch(()=>{});
-});
-
 vid.addEventListener("ended", () => {
 audio.play().catch(()=>{});
 });
