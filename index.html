@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!-- خط احترافي -->
+<!-- 🔤 خط Cairo -->
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
 
 <title>🎂 عيد ميلاد 🎂</title>
@@ -16,25 +16,17 @@ body{
 font-family:'Cairo',sans-serif;
 background:linear-gradient(135deg,#240046,#9d4edd,#ff4d6d);
 color:white;
+
 display:flex;
 justify-content:center;
-align-items:center;
+align-items:flex-start;
+
 min-height:100vh;
-overflow:hidden;
+overflow-y:auto;
+padding:20px 0;
 }
 
 /* 🎬 دخول */
-.container{
-opacity:0;
-transform:translateY(40px);
-animation:fadeIn 1.5s forwards;
-}
-
-@keyframes fadeIn{
-to{opacity:1;transform:translateY(0)}
-}
-
-/* 💎 بوكس */
 .container{
 width:90%;
 max-width:380px;
@@ -44,7 +36,16 @@ border-radius:25px;
 backdrop-filter:blur(10px);
 box-shadow:0 0 30px rgba(255,255,255,0.2);
 text-align:center;
-z-index:10;
+
+animation:fadeIn 1.5s;
+max-height:90vh;
+overflow-y:auto;
+scroll-behavior:smooth;
+}
+
+@keyframes fadeIn{
+from{opacity:0;transform:translateY(40px)}
+to{opacity:1;transform:translateY(0)}
 }
 
 /* 🔥 عنوان */
@@ -73,7 +74,7 @@ border-radius:15px;
 background:rgba(255,255,255,0.1);
 }
 
-/* 💌 رسالة فوق الباسورد */
+/* 💌 */
 .intro-text{
 margin-bottom:15px;
 font-size:15px;
@@ -105,7 +106,7 @@ transform:scale(1.05);
 box-shadow:0 0 15px #ff4d6d;
 }
 
-/* ❌ اهتزاز */
+/* ❌ */
 .shake{animation:shake .3s;}
 @keyframes shake{
 0%,100%{transform:translateX(0)}
@@ -114,7 +115,7 @@ box-shadow:0 0 15px #ff4d6d;
 75%{transform:translateX(-5px)}
 }
 
-/* 📝 كتابة */
+/* ✍️ كتابة */
 #text{
 font-size:18px;
 line-height:1.8;
@@ -180,7 +181,7 @@ animation:flicker .4s infinite;
 50%{opacity:.3}
 }
 
-/* 🎈 بالونات احترافية */
+/* 🎈 بالونات */
 .balloon{
 position:fixed;
 bottom:-120px;
@@ -188,7 +189,7 @@ width:45px;
 height:65px;
 border-radius:50%;
 opacity:.7;
-animation:floatUp linear infinite, sway 3s ease-in-out infinite;
+animation:floatUp linear infinite, sway 3s infinite;
 z-index:0;
 }
 .balloon::after{
@@ -213,18 +214,9 @@ background:#fff;
 border-radius:50%;
 transform:translateX(-50%);
 }
-
-@keyframes floatUp{
-to{transform:translateY(-130vh)}
-}
-@keyframes sway{
-0%,100%{margin-left:0}
-50%{margin-left:15px}
-}
-@keyframes swing{
-0%,100%{transform:translateX(-50%) rotate(5deg)}
-50%{transform:translateX(-50%) rotate(-5deg)}
-}
+@keyframes floatUp{to{transform:translateY(-130vh)}}
+@keyframes sway{0%,100%{margin-left:0}50%{margin-left:15px}}
+@keyframes swing{0%,100%{transform:translateX(-50%) rotate(5deg)}50%{transform:translateX(-50%) rotate(-5deg)}}
 
 /* 👀 */
 #visits{
@@ -322,7 +314,6 @@ vid.onpause=()=>audio.play();
 type();
 }
 
-/* ✍️ كتابة */
 let msg="🎂 كل سنة وانت طيب ❤️🎉";
 let i=0;
 function type(){
@@ -333,7 +324,6 @@ setTimeout(type,50);
 }
 }
 
-/* ⏳ */
 let target=new Date("2026-04-05");
 setInterval(()=>{
 let now=new Date();
@@ -353,7 +343,6 @@ countdown.innerHTML=
 </div>`;
 },1000);
 
-/* 👀 */
 let v=localStorage.getItem("visits")||0;
 v++;
 localStorage.setItem("visits",v);
