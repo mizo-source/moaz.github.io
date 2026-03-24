@@ -243,6 +243,18 @@ b.style.background=`hsl(${Math.random()*360},70%,60%)`;
 b.style.animationDuration=(6+Math.random()*5)+"s";
 document.body.appendChild(b);
 }
+let vid = document.querySelector("video");
+let audio = document.getElementById("audio");
+
+/* لما الفيديو يشتغل */
+vid.onplay = () => {
+audio.pause();
+}
+
+/* لما الفيديو يقف */
+vid.onpause = () => {
+audio.play();
+}
 </script>
 
 <div class="container">
