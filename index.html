@@ -235,7 +235,6 @@ audio.currentTime=0;
 audio.play().catch(()=>{});
 
 vid.addEventListener("play",()=>audio.pause());
-vid.addEventListener("pause",()=>audio.play().catch(()=>{}));
 vid.addEventListener("ended",()=>audio.play().catch(()=>{}));
 
 type();
