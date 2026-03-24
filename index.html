@@ -1,1 +1,248 @@
-# moaz.github.io
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>🎂 مفاجأة عيد ميلاد 🎂</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family: Arial;
+  text-align:center;
+  color:white;
+  background: linear-gradient(135deg,#6a00f4,#ff4d6d,#00c3ff);
+  overflow-x:hidden;
+}
+
+/* عنوان */
+h1{
+  margin-top:40px;
+  font-size:34px;
+  text-shadow:0 0 20px #fff;
+}
+
+/* عداد */
+#countdown{
+  margin-top:20px;
+  font-size:22px;
+  background:rgba(0,0,0,0.3);
+  display:inline-block;
+  padding:15px 25px;
+  border-radius:20px;
+  box-shadow:0 0 20px #fff;
+}
+
+/* باسورد */
+input{
+  margin-top:20px;
+  padding:12px;
+  border:none;
+  border-radius:20px;
+  font-size:16px;
+  text-align:center;
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  margin-top:10px;
+  font-size:16px;
+  background:linear-gradient(45deg,pink,red);
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 15px pink;
+}
+
+/* المحتوى */
+#content{
+  display:none;
+  margin-top:30px;
+  animation:fade 1s ease;
+}
+
+@keyframes fade{
+  from{opacity:0;transform:translateY(20px);}
+  to{opacity:1;transform:translateY(0);}
+}
+
+/* رسالة */
+#text{
+  font-size:24px;
+  margin:20px;
+  white-space:pre-line;
+}
+
+/* صورة */
+img{
+  width:80%;
+  max-width:350px;
+  border-radius:20px;
+  margin-top:15px;
+  box-shadow:0 0 20px pink;
+}
+
+/* فيديو */
+video{
+  width:80%;
+  max-width:400px;
+  margin-top:20px;
+  border-radius:20px;
+}
+
+/* قلوب */
+.heart{
+  position:fixed;
+  font-size:20px;
+  animation:fall 5s linear infinite;
+}
+@keyframes fall{
+  0%{transform:translateY(-10vh);opacity:0;}
+  50%{opacity:1;}
+  100%{transform:translateY(100vh);opacity:0;}
+}
+
+/* ألعاب نارية */
+canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  pointer-events:none;
+}
+</style>
+</head>
+
+<body>
+
+<h1>🎂 مفاجأة عيد ميلاد 🎂</h1>
+
+<div id="countdown"></div>
+
+<p>اكتب الباسورد 🎁</p>
+<input type="password" id="pass">
+<br>
+<button onclick="openSite()">افتح 💖</button>
+
+<div id="content">
+
+<p id="text"></p>
+
+<!-- 🖼️ حط لينك الصورة هنا -->
+<img src="PUT-IMAGE-LINK-HERE">
+
+<!-- 🎥 حط لينك الفيديو هنا -->
+<video controls>
+  <source src="PUT-VIDEO-LINK-HERE">
+</video>
+
+</div>
+
+<!-- 🎵 الصوت -->
+<audio id="music" loop>
+  <source src="PUT-AUDIO-LINK-HERE">
+</audio>
+
+<canvas id="fire"></canvas>
+
+<script>
+
+// ⏳ عداد لحد 5 ابريل 2026
+let target = new Date("2026-04-05T00:00:00");
+
+setInterval(()=>{
+  let now=new Date();
+  let diff=target-now;
+
+  if(diff<=0){
+    document.getElementById("countdown").innerHTML="🎉 النهارده عيد الميلاد 🎂";
+    return;
+  }
+
+  let d=Math.floor(diff/(1000*60*60*24));
+  let h=Math.floor((diff/(1000*60*60))%24);
+  let m=Math.floor((diff/(1000*60))%60);
+  let s=Math.floor((diff/1000)%60);
+
+  countdown.innerHTML=`⏳ ${d} يوم - ${h} ساعة - ${m} دقيقة - ${s} ثانية`;
+},1000);
+
+// ✍️ كتابة
+let msg="🎂 كل سنة وانتي طيبة ❤️\nانتي أجمل حاجة في حياتي 💖";
+let i=0;
+function type(){
+  if(i<msg.length){
+    text.innerHTML+=msg[i];
+    i++;
+    setTimeout(type,60);
+  }
+}
+
+// 🔐 باسورد
+function openSite(){
+  if(pass.value==="1234"){
+    content.style.display="block";
+    type();
+    music.play();
+
+    startFire();
+  }else{
+    alert("❌ غلط");
+  }
+}
+
+// 💖 قلوب
+setInterval(()=>{
+  let h=document.createElement("div");
+  h.className="heart";
+  h.innerHTML="💖";
+  h.style.left=Math.random()*100+"vw";
+  document.body.appendChild(h);
+  setTimeout(()=>h.remove(),5000);
+},300);
+
+// 🎆 ألعاب نارية
+let c=document.getElementById("fire");
+let ctx=c.getContext("2d");
+c.width=innerWidth;
+c.height=innerHeight;
+
+let p=[];
+
+function startFire(){
+  setInterval(()=>{
+    for(let i=0;i<50;i++){
+      p.push({
+        x:Math.random()*c.width,
+        y:Math.random()*c.height/2,
+        vx:(Math.random()-0.5)*5,
+        vy:(Math.random()-0.5)*5,
+        life:100
+      });
+    }
+  },500);
+}
+
+function draw(){
+  ctx.clearRect(0,0,c.width,c.height);
+  p.forEach((e,i)=>{
+    e.x+=e.vx;
+    e.y+=e.vy;
+    e.life--;
+
+    ctx.beginPath();
+    ctx.arc(e.x,e.y,2,0,6.28);
+    ctx.fillStyle="white";
+    ctx.fill();
+
+    if(e.life<=0) p.splice(i,1);
+  });
+  requestAnimationFrame(draw);
+}
+draw();
+
+</script>
+
+</body>
+</html>
