@@ -260,37 +260,6 @@ audio.play().catch(()=>{});
 
 }
 
-type();
-}
-} 
-function openSite(){
-login.style.display="none";
-content.classList.remove("hidden");
-
-let vid = document.querySelector("video");
-let audio = document.getElementById("audio");
-
-if(audio){
-audio.currentTime=0;
-audio.play().catch(()=>{});
-}
-
-if(vid && audio){
-
-vid.addEventListener("play", () => {
-audio.pause();
-});
-
-vid.addEventListener("ended", () => {
-audio.play().catch(()=>{});
-});
-
-}
-
-type();
-}
-type();
-}
 
 let msg="🎂 كل سنة وانت طيب ❤️🎉";
 let i=0;
@@ -307,7 +276,7 @@ setInterval(()=>{
 let now=new Date();
 let diff=target-now;
 
-let d=Math.floor(diff/86400000);
+let d=Math.floor(ريس/86400000);
 let h=Math.floor(diff/3600000%24);
 let m=Math.floor(diff/60000%60);
 let s=Math.floor(diff/1000%60);
