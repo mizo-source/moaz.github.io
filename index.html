@@ -250,9 +250,23 @@ audio.play().catch(()=>{});
 // التحكم بين الفيديو والصوت
 if(vid && audio){
 
+if(vid && audio){
+
 vid.addEventListener("play", () => {
 audio.pause();
 });
+
+// لما الفيديو يخلص
+vid.addEventListener("ended", () => {
+audio.play().catch(()=>{});
+});
+
+// 🟢 لما تعمل pause للفيديو
+vid.addEventListener("pause", () => {
+audio.play().catch(()=>{});
+});
+
+  }
 
 vid.addEventListener("ended", () => {
 audio.play().catch(()=>{});
