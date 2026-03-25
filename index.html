@@ -63,7 +63,10 @@ line-height:1.8;
 text-shadow:0 0 8px rgba(255,255,255,0.4);
 animation:fadeText 2s infinite alternate;
 }
-@keyframes fadeText{from{opacity:.6}to{opacity:1}}
+@keyframes fadeText{
+  from{opacity:.6}
+  to{opacity:1}
+}
 
 input,button{
 width:80%;
@@ -95,7 +98,10 @@ text-shadow:0 0 5px #fff,0 0 10px #ff4d6d;
 animation:pulse 2s infinite;
 margin-top:15px;
 }
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.1)}
+}
 
 img{
 width:100%;
@@ -211,7 +217,6 @@ transform:translateX(-200px) rotate(-20deg);
 opacity:0;
 }
 
-</style> 
 </style>
 </head>
 
@@ -222,7 +227,7 @@ for(let i=0;i<10;i++){
 let b=document.createElement("div");
 b.className="balloon";
 b.style.left=Math.random()*100+"%";
-b.style.background=`hsl(${Math.random()*360},70%,60%)`;
+b.style.background = `hsl(${Math.random()*360},70%,60%)`;
 b.style.animationDuration=(6+Math.random()*5)+"s";
 document.body.appendChild(b);
 }
@@ -240,7 +245,7 @@ document.body.appendChild(b);
 
 <!-- 🎂 الكيكة هنا -->
 <div id="cake-box">
-  <img id="cake" src="https://i.imgur.com/6X4Q7Qy.png">
+  <img id="cake" src="https://images.unsplash.com/photo-1607478900766-efe13248b125?q=80&w=800">
   <div class="candles">
     <div class="candle"></div>
     <div class="candle"></div>
@@ -345,14 +350,17 @@ audio.play().catch(()=>{});
 
 }
 
-let msg="🎂 كل سنة وانت طيب ❤️🎉";
-let i=0;
+let text = document.getElementById("text");
+
+let msg = "🎂 كل سنة وانت طيب ❤️🎉";
+let i = 0;
+
 function type(){
-if(i<msg.length){
-text.innerHTML+=msg[i];
-i++;
-setTimeout(type,50);
-}
+  if(i < msg.length){
+    text.innerHTML += msg[i];
+    i++;
+    setTimeout(type, 50);
+  }
 }
 
 let target=new Date("2026-04-05");
