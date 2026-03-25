@@ -211,9 +211,10 @@ document.body.appendChild(b);
 let password="18/8/2008-5/4/2008";
 
 function check(){
-let p=pass.value;
-if(p===password){openSite();}
-else{
+let p = pass.value.trim();
+if(p === password){
+openSite();
+}
 login.classList.add("shake");
 setTimeout(()=>login.classList.remove("shake"),300);
 error.style.display="block";
