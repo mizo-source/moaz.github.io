@@ -231,8 +231,10 @@ if(this.value.trim() === password){
 openSite();
 }
 });
-
 function openSite(){
+let login = document.getElementById("login");
+let content = document.getElementById("content");
+
 login.style.display="none";
 content.classList.remove("hidden");
 
@@ -259,7 +261,7 @@ audio.play().catch(()=>{});
 }
 
 type();
-  }
+}
 } 
 function openSite(){
 login.style.display="none";
