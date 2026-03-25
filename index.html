@@ -232,32 +232,35 @@ b.style.animationDuration=(6+Math.random()*5)+"s";
 document.body.appendChild(b);
 }
 </script>
-
-<div class="container">
+<div class="container" id="login">
 
 <div id="countdown"></div>
 
-
 <div class="intro-text">💌 عندي ليك مفاجأة... اكتب الباسورد 😉</div>
+
 <input type="password" id="pass" placeholder="الباسورد">
 <br>
 <button onclick="check()">فتح</button>
 
-<!-- 🎂 الكيكة هنا -->
+<!-- 🎂 الكيكة -->
 <div id="cake-box">
-  <img id="cake" src="https://images.unsplash.com/photo-1607478900766-efe13248b125?q=80&w=800">
+  <img id="cake" src="https://i.postimg.cc/8zJ1Qp7Z/cake.png">
   <div class="candles">
     <div class="candle"></div>
     <div class="candle"></div>
     <div class="candle"></div>
   </div>
 </div>
+
 <p id="error" style="color:red;display:none">❌ غلط</p>
+
 </div>
 
 <div id="content" class="hidden">
 
 <h1>🎂 Happy Birthday 🎂</h1>
+
+<p id="text"></p>
 
 <div>
 <div class="candle"></div>
