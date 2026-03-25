@@ -151,6 +151,67 @@ position:fixed;bottom:5px;width:100%;font-size:12px;text-align:center;opacity:.7
 }
 
 .hidden{display:none}
+  
+/* الكيكه */
+#cake-box{
+position:relative;
+margin-top:20px;
+}
+
+#cake{
+width:100%;
+border-radius:20px;
+animation:floatCake 2s infinite alternate;
+transition:1s;
+}
+
+@keyframes floatCake{
+from{transform:translateY(0)}
+to{transform:translateY(-10px)}
+}
+
+/* الشموع */
+.candles{
+position:absolute;
+top:-10px;
+left:0;
+right:0;
+display:flex;
+justify-content:center;
+gap:15px;
+}
+
+.candle{
+width:8px;
+height:30px;
+background:white;
+position:relative;
+}
+
+.candle::after{
+content:'';
+position:absolute;
+top:-8px;
+left:1px;
+width:6px;
+height:8px;
+background:orange;
+border-radius:50%;
+animation:flicker .3s infinite;
+}
+
+@keyframes flicker{
+0%,100%{opacity:1}
+50%{opacity:.3}
+}
+
+/* التقطيع */
+.cut{
+transform:translateX(-200px) rotate(-20deg);
+opacity:0;
+}
+
+</style> 
 </style>
 </head>
 
@@ -171,11 +232,21 @@ document.body.appendChild(b);
 
 <div id="countdown"></div>
 
-<div id="login">
+
 <div class="intro-text">💌 عندي ليك مفاجأة... اكتب الباسورد 😉</div>
 <input type="password" id="pass" placeholder="الباسورد">
 <br>
 <button onclick="check()">فتح</button>
+
+<!-- 🎂 الكيكة هنا -->
+<div id="cake-box">
+  <img id="cake" src="https://i.imgur.com/6X4Q7Qy.png">
+  <div class="candles">
+    <div class="candle"></div>
+    <div class="candle"></div>
+    <div class="candle"></div>
+  </div>
+</div>
 <p id="error" style="color:red;display:none">❌ غلط</p>
 </div>
 
@@ -232,12 +303,20 @@ openSite();
 }
 });
 function openSite(){
+
+let cake = document.getElementById("cake");
+if(cake){
+  cake.classList.add("cut");
+}
+
 let login = document.getElementById("login");
 let content = document.getElementById("content");
 
-login.style.display="none";
-content.classList.remove("hidden");
-
+setTimeout(()=>{
+  login.style.display="none";
+  content.classList.remove("hidden");
+},800);
+  
 let vid = document.querySelector("video");
 let audio = document.getElementById("audio");
 
