@@ -208,20 +208,62 @@ document.body.appendChild(b);
 <div id="visits"></div>
 
 <script>
-let password="18/8/2008-5/4/2008";
+let password = "18/8/2008-5/4/2008";
 
 function check(){
-let p = pass.value.trim();
+let p = document.getElementById("pass").value.trim();
+
 if(p === password){
 openSite();
-}
+}else{
+let login = document.getElementById("login");
+let error = document.getElementById("error");
+
 login.classList.add("shake");
 setTimeout(()=>login.classList.remove("shake"),300);
 error.style.display="block";
 }
-pass.oninput=()=>{
-if(pass.value===password) openSite();
 }
+
+// فتح تلقائي لو كتب صح
+document.getElementById("pass").addEventListener("input", function(){
+if(this.value.trim() === password){
+openSite();
+}
+});
+if(this.value.trim() === password){
+openSite();
+}
+});
+
+function openSite(){
+login.style.display="none";
+content.classList.remove("hidden");
+
+let vid = document.querySelector("video");
+let audio = document.getElementById("audio");
+
+// تشغيل الصوت
+if(audio){
+audio.currentTime=0;
+audio.play().catch(()=>{});
+}
+
+// التحكم بين الفيديو والصوت
+if(vid && audio){
+
+vid.addEventListener("play", () => {
+audio.pause();
+});
+
+vid.addEventListener("ended", () => {
+audio.play().catch(()=>{});
+});
+
+}
+
+type();
+  }
 } 
 function openSite(){
 login.style.display="none";
