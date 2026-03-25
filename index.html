@@ -250,8 +250,6 @@ audio.play().catch(()=>{});
 // التحكم بين الفيديو والصوت
 if(vid && audio){
 
-if(vid && audio){
-
 vid.addEventListener("play", () => {
 audio.pause();
 });
@@ -266,14 +264,7 @@ vid.addEventListener("pause", () => {
 audio.play().catch(()=>{});
 });
 
-  }
-
-vid.addEventListener("ended", () => {
-audio.play().catch(()=>{});
-});
-} 
 }
-
 
 let msg="🎂 كل سنة وانت طيب ❤️🎉";
 let i=0;
