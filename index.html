@@ -37,191 +37,14 @@ max-height:90vh;
 overflow-y:auto;
 }
 
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(40px)}
-to{opacity:1;transform:translateY(0)}
-}
-
-h1{
-font-size:26px;
-text-shadow:0 0 10px #fff,0 0 20px #ff4d6d;
-animation:glow 2s infinite alternate;
-margin-bottom:10px;
-}
-@keyframes glow{
-from{text-shadow:0 0 5px #fff}
-to{text-shadow:0 0 20px #ff4d6d}
-}
-
-.counter{display:flex;justify-content:space-between;margin-bottom:15px;}
-.box{flex:1;margin:3px;padding:10px;border-radius:15px;background:rgba(255,255,255,0.1);}
-
-.intro-text{
-margin-bottom:15px;
-font-size:15px;
-line-height:1.8;
-text-shadow:0 0 8px rgba(255,255,255,0.4);
-animation:fadeText 2s infinite alternate;
-}
-@keyframes fadeText{
-  from{opacity:.6}
-  to{opacity:1}
-}
-
-input,button{
-width:80%;
-padding:10px;
-border:none;
-border-radius:10px;
-margin:5px;
-}
-button{
-background:#ff4d6d;
-color:white;
-cursor:pointer;
-transition:.3s;
-}
-button:hover{transform:scale(1.05);box-shadow:0 0 15px #ff4d6d;}
-
-.shake{animation:shake .3s;}
-@keyframes shake{
-0%,100%{transform:translateX(0)}
-25%{transform:translateX(-5px)}
-50%{transform:translateX(5px)}
-75%{transform:translateX(-5px)}
-}
-
-#text{
-font-size:18px;
-line-height:1.8;
-text-shadow:0 0 5px #fff,0 0 10px #ff4d6d;
-animation:pulse 2s infinite;
-margin-top:15px;
-}
-@keyframes pulse{
-  0%,100%{transform:scale(1)}
-  50%{transform:scale(1.1)}
-}
-
-img{
-width:100%;
-height:200px;
-object-fit:cover;
-border-radius:15px;
-margin-top:20px;
-}
-
-.video-box{position:relative;margin-top:20px;}
-
-video{
-width:100%;
-max-height:350px;
-border-radius:15px;
-object-fit:contain;
-background:black;
-}
-
-.video-text{
-position:absolute;
-top:10px;
-left:0;
-right:0;
-text-align:center;
-font-weight:bold;
-color:#fff;
-text-shadow:0 0 10px #ff4d6d;
-animation:floatText 2s infinite;
-}
-
-@keyframes floatText{
-0%,100%{transform:translateY(0)}
-50%{transform:translateY(-5px)}
-}
-
-.candle{
-width:10px;height:40px;background:white;display:inline-block;margin:5px;position:relative;
-}
-.candle::after{
-content:'';position:absolute;top:-10px;left:2px;width:6px;height:10px;background:orange;border-radius:50%;animation:flicker .4s infinite;
-}
-@keyframes flicker{0%,100%{opacity:1}50%{opacity:.3}}
-
-.balloon{
-position:fixed;bottom:-120px;width:45px;height:65px;border-radius:50%;opacity:.7;
-animation:floatUp linear infinite;
-}
-@keyframes floatUp{to{transform:translateY(-130vh)}}
-
-#visits{
-position:fixed;bottom:5px;width:100%;font-size:12px;text-align:center;opacity:.7;
-}
-
 .hidden{display:none}
-  
-/* الكيكه */
-#cake-box{
-position:relative;
-margin-top:20px;
-}
-
-#cake{
-width:100%;
-border-radius:20px;
-animation:floatCake 2s infinite alternate;
-transition:1s;
-}
-
-@keyframes floatCake{
-from{transform:translateY(0)}
-to{transform:translateY(-10px)}
-}
-
-/* الشموع */
-.candles{
-position:absolute;
-top:-10px;
-left:0;
-right:0;
-display:flex;
-justify-content:center;
-gap:15px;
-}
-
-.candle{
-width:8px;
-height:30px;
-background:white;
-position:relative;
-}
-
-.candle::after{
-content:'';
-position:absolute;
-top:-8px;
-left:1px;
-width:6px;
-height:8px;
-background:orange;
-border-radius:50%;
-animation:flicker .3s infinite;
-}
-
-@keyframes flicker{
-0%,100%{opacity:1}
-50%{opacity:.3}
-}
-
-/* التقطيع */
-.cut{
-transform:translateX(-200px) rotate(-20deg);
-opacity:0;
-}
 
 </style>
 </head>
 
 <body>
 
+<!-- بالونات -->
 <script>
 for(let i=0;i<10;i++){
 let b=document.createElement("div");
@@ -234,30 +57,14 @@ document.body.appendChild(b);
 </script>
 
 <div class="container" id="login">
-  <!-- باقي العناصر هنا -->
-</div>
-
-</body>
 
 <div id="countdown"></div>
-
-
 
 <div class="intro-text">💌 عندي ليك مفاجأة... اكتب الباسورد 😉</div>
 
 <input type="password" id="pass" placeholder="الباسورد">
 <br>
 <button onclick="check()">فتح</button>
-
-<!-- 🎂 الكيكة -->
-<div id="cake-box">
-  <img id="cake" src="https://files.catbox.moe/ttuv68.jpg">
-  <div class="candles">
-    <div class="candle"></div>
-    <div class="candle"></div>
-    <div class="candle"></div>
-  </div>
-</div>
 
 <p id="error" style="color:red;display:none">❌ غلط</p>
 
@@ -267,26 +74,17 @@ document.body.appendChild(b);
 
 <h1>🎂 Happy Birthday 🎂</h1>
 
-<p id="text">كل سنة  🎉❤️</p>
-
-<div>
-<div class="candle"></div>
-<div class="candle"></div>
-<div class="candle"></div>
-</div>
-
+<p id="text">كل سنة 🎉❤️</p>
 
 <img src="https://files.catbox.moe/e0avra.jpeg">
 
 <div class="video-box">
-<div class="video-text">🙂🤍 فاكره الفديو ده 
-ده انتي بعتهولي يوم عيد ميلادي 18/8/2024 🤍🙂</div>
+<div class="video-text">🙂🤍 فاكره الفديو ده</div>
 <video id="vid" controls>
 <source src="https://files.catbox.moe/9nxznw.mp4" type="video/mp4">
 </video>
 </div>
 
-</div>
 </div>
 
 <audio id="audio" src="https://files.catbox.moe/mo1uqz.m4a" loop></audio>
@@ -311,71 +109,53 @@ error.style.display="block";
 }
 }
 
-// فتح تلقائي لو كتب صح
 document.getElementById("pass").addEventListener("input", function(){
 if(this.value.trim() === password){
 openSite();
 }
 });
-function openSite(){
 
-let cake = document.getElementById("cake");
-if(cake){
-  cake.classList.add("cut");
-}
+function openSite(){
 
 let login = document.getElementById("login");
 let content = document.getElementById("content");
 
 setTimeout(()=>{
-  login.style.display="none";
-  content.classList.remove("hidden");
-},800);
-  
-let vid = document.querySelector("video");
+login.style.display="none";
+content.classList.remove("hidden");
+},500);
+
+let vid = document.getElementById("vid");
 let audio = document.getElementById("audio");
 
-// تشغيل الصوت
 if(audio){
-audio.currentTime=0;
 audio.play().catch(()=>{});
 }
 
-// التحكم بين الفيديو والصوت
 if(vid && audio){
-
-vid.addEventListener("play", () => {
-audio.pause();
-});
-
-// لما الفيديو يخلص
-vid.addEventListener("ended", () => {
-audio.play().catch(()=>{});
-});
-
-// 🟢 لما تعمل pause للفيديو
-vid.addEventListener("pause", () => {
-audio.play().catch(()=>{});
-});
-
+vid.addEventListener("play", () => audio.pause());
+vid.addEventListener("pause", () => audio.play().catch(()=>{}));
+vid.addEventListener("ended", () => audio.play().catch(()=>{}));
 }
 
 let text = document.getElementById("text");
-
-let msg = " عارف ان الرساله معروفه وبايخه عمتا 🙂😅 بس كل سنه وانتي طيبه وعيد ميلاد سعيده يا حبيبتي وعقبال ١٠٠ سنه🫂  بس انا مش عاملها علشان عيد ميلادك بس  كمان عايز اقولك انا متوقعتش احبك الحب ده بجد انتي بقيتي كل  في حياتي و مهاما حاولت اوصف قد ايه انا بحبك مش هقدر اوصفلك بس الي اقدر اقوله ان انتي اجمل حاجه شفتها في حياتي ومقدرش اعيش من غيرك انا متعلقتش بيكي بس انا ادمنتك  وادمنت وجودك لما تغيبي بتغيب كل حاجه حلوه معاكي  ورينا يعلم قد اي يحبك وبغير عليكي ازاي و ربنا ميحرمنيش منك ابدا ي حيات 🫂🫂💋 🎂";
+let msg = "كل سنة وانتي طيبة ❤️🎂";
 let i = 0;
 
 function type(){
-  if(i < msg.length){
-    text.innerHTML += msg[i];
-    i++;
-    setTimeout(type, 50);
-  }
+if(i < msg.length){
+text.innerHTML += msg[i];
+i++;
+setTimeout(type, 50);
+}
+}
+type();
 }
 
+// العداد
 let countdown = document.getElementById("countdown");
-
 let target=new Date("2026-04-05");
+
 setInterval(()=>{
 let now=new Date();
 let diff=target-now;
@@ -386,19 +166,16 @@ let m=Math.floor(diff/60000%60);
 let s=Math.floor(diff/1000%60);
 
 countdown.innerHTML=
-`<div class="counter">
-<div class="box">${d} 🎂</div>
-<div class="box">${h} ⏰</div>
-<div class="box">${m} ⌛</div>
-<div class="box">${s} ⚡</div>
-</div>`;
+`<div>${d} يوم ${h} ساعة ${m} دقيقة ${s} ثانية</div>`;
 },1000);
 
+// عدد الزيارات
+let visits = document.getElementById("visits");
 let v=localStorage.getItem("visits")||0;
 v++;
 localStorage.setItem("visits",v);
 visits.innerText="👀 "+v;
-  }
+
 </script>
 
 </body>
